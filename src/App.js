@@ -1,24 +1,74 @@
-import logo from './logo.svg';
-import './App.css';
+import { createContext, useState } from "react";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Outlet,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import "./App.css";
+import { DeductionForm } from "./component/deductions/DeductionForm";
+import { IncomeForm } from "./component/income/IncomeForm";
+import { NavBar } from "./component/navbar/NavBar";
+import { Summary } from "./component/summary/Summary";
+export const TaxContext = createContext();
 
 function App() {
+  const [income, setIncome] = useState({
+    grossIncome: "",
+    basicSalary: "",
+    hra: "",
+    lta: "",
+    aoa: "",
+  });
+  const [deduction, setDeduction] = useState({
+    totalDeductionAmt: "",
+    standardDeduction: 50000,
+    c80c: "",
+    d80d: "",
+    t80tta: "",
+    trp: "",
+    hraExemption: "",
+  });
+  const [taxableAmtSal, setTaxableAmtSal] = useState(0);
+  const [OldTaxAmt, setOldtaxAmt] = useState("");
+  const [newTaxAmt, setNewTaxAmt] = useState("");
+  const AppLayout = () => (
+    <>
+      <NavBar />
+      <Outlet />
+    </>
+  );
+  let router = createBrowserRouter(
+    createRoutesFromElements(
+      <>
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<IncomeForm />} />
+          <Route path="/deduction" element={<DeductionForm />} />
+          <Route path="/summary" element={<Summary />} />
+        </Route>
+      </>
+    )
+  );
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TaxContext.Provider
+      value={{
+        income,
+        setIncome,
+        deduction,
+        setDeduction,
+        taxableAmtSal,
+        setTaxableAmtSal,
+        OldTaxAmt,
+        setOldtaxAmt,
+        newTaxAmt,
+        setNewTaxAmt,
+      }}
+    >
+      <div className="App">
+        <RouterProvider router={router} />
+      </div>
+    </TaxContext.Provider>
   );
 }
 
