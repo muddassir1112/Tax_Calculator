@@ -41,12 +41,11 @@ export const IncomeForm = () => {
       )
     ) {
       let temp = 0;
-      temp = parseFloat(
-        BASIC_SAL_AMT.current.value +
-          HRA_AMT.current.value +
-          LTA_AMT.current.value +
-          AOA_AMT.current.value
-      );
+      temp =
+        parseFloat(BASIC_SAL_AMT.current.value) +
+        parseFloat(HRA_AMT.current.value) +
+        parseFloat(LTA_AMT.current.value) +
+        parseFloat(AOA_AMT.current.value);
       data.setIncome({
         grossIncome: temp,
         basicSalary: parseFloat(BASIC_SAL_AMT.current.value),
@@ -125,14 +124,14 @@ export const IncomeForm = () => {
           {/* alert box */}
           <div className="d-grid gap-2 d-md-flex justify-content-md-end">
             <button className="btn btn-primary btn--next me-md-2" type="button">
-              <i class="far fa-arrow-alt-circle-left"></i> Back
+              <i className="far fa-arrow-alt-circle-left"></i> Back
             </button>
             <button
               className="btn btn-primary btn--next"
               type="button"
               onClick={handleGrossIncome}
             >
-              Next <i class="far fa-arrow-alt-circle-right"></i>
+              Next <i className="far fa-arrow-alt-circle-right"></i>
             </button>
           </div>
         </form>

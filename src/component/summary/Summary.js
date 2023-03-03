@@ -81,8 +81,6 @@ export const Summary = () => {
             </tr>
             <tr>
               <th colSpan={3}>Deductions</th>
-              {/* <td></td>
-              <td>_</td> */}
             </tr>
             <tr>
               <td>80C</td>

@@ -220,14 +220,14 @@ export const DeductionForm = () => {
               className="btn btn-primary btn--next me-md-2"
               type="button"
             >
-              <i class="far fa-arrow-alt-circle-left"></i> Back
+              <i className="far fa-arrow-alt-circle-left"></i> Back
             </Link>
             <button
               className="btn btn-primary btn--next"
               type="button"
               onClick={handleCalculateTax}
             >
-              Calculate Tax <i class="far fa-arrow-alt-circle-right"></i>
+              Calculate Tax <i className="far fa-arrow-alt-circle-right"></i>
             </button>
           </div>
         </form>
