@@ -115,7 +115,7 @@ export const DeductionForm = () => {
       return taxAmount;
     } else {
       taxAmount = parseFloat(
-        data.income.grossIncome - (50000 + v1 + v2 + v3 + hras) - 250000
+        data.income.grossIncome - (50000 + v1 + v2 + v3 + hras)
       );
       return taxAmount;
     }
