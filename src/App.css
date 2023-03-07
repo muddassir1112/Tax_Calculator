@@ -1,7 +1,3 @@
-.breadcrumb-item + .breadcrumb-item::before {
-  content: "|" !important;
-}
-
 .forms {
   background-image: linear-gradient(to bottom, #5ee7df 0%, #b490ca 100%);
 }
