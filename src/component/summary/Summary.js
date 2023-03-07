@@ -60,56 +60,57 @@ export const Summary = () => {
               <th>
                 <h3>Amount</h3>
               </th>
-              <th>
-                <h3>Total</h3>
-              </th>
             </tr>
             <tr>
               <th>Income From Salary</th>
               <td>₹{data.income.basicSalary}</td>
-              <td>_</td>
             </tr>
             <tr>
               <th>Income From Other Sources</th>
-              <td>₹{data.income.aoa}</td>
-              <td>_</td>
+              <td>
+                ₹
+                {data.income.aoa +
+                  data.income.hra +
+                  data.income.lta}
+              </td>
             </tr>
             <tr>
               <th>Gross Total Income</th>
-              <td>_</td>
               <th>₹{data.income.grossIncome}</th>
             </tr>
             <tr>
               <th colSpan={3}>Deductions</th>
             </tr>
             <tr>
+              <td>Standard Dedcution</td>
+              <td>₹50000</td>
+            </tr>
+            <tr>
               <td>80C</td>
               <td>₹{data.deduction.c80c}</td>
-              <td>_</td>
             </tr>
             <tr>
               <td>80D</td>
               <td>₹{data.deduction.d80d}</td>
-              <td>_</td>
             </tr>
             <tr>
               <td>80TTA</td>
               <td>₹{data.deduction.t80tta}</td>
+            </tr>
+            <tr>
+              <th>Total Deduction Amount</th>
               <th>₹{data.deduction.totalDeductionAmt}</th>
             </tr>
             <tr>
               <th>Gross Taxable Income</th>
-              <td></td>
               <th>₹{data.taxableAmtSal}</th>
             </tr>
             <tr>
               <th>Total tax on above(including cess as per old regime)</th>
-              <td>_</td>
               <th>₹{data.OldTaxAmt}</th>
             </tr>
             <tr>
               <th>Total tax on above(including cess as per new regime)</th>
-              <td>_</td>
               <th>₹{data.newTaxAmt}</th>
             </tr>
             <tr>
