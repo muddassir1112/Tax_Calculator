@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { TaxContext } from "../../App";
 
@@ -67,12 +67,7 @@ export const Summary = () => {
             </tr>
             <tr>
               <th>Income From Other Sources</th>
-              <td>
-                ₹
-                {data.income.aoa +
-                  data.income.hra +
-                  data.income.lta}
-              </td>
+              <td>₹{data.income.aoa + data.income.hra + data.income.lta}</td>
             </tr>
             <tr>
               <th>Gross Total Income</th>

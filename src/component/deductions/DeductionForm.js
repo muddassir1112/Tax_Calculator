@@ -148,6 +148,7 @@ export const DeductionForm = () => {
               id="floatingPassword"
               placeholder="HRA"
               ref={C80C_AMT}
+              autoFocus
             />
             <label htmlFor="floatingPassword">80C(₹ per annum)</label>
           </div>

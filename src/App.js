@@ -33,6 +33,7 @@ function App() {
   const [taxableAmtSal, setTaxableAmtSal] = useState(0);
   const [OldTaxAmt, setOldtaxAmt] = useState("");
   const [newTaxAmt, setNewTaxAmt] = useState("");
+  const [breadcrumb, setBreadcrumb] = useState(["Income Details"]);
   const AppLayout = () => (
     <>
       <NavBar />
@@ -63,6 +64,8 @@ function App() {
         setOldtaxAmt,
         newTaxAmt,
         setNewTaxAmt,
+        breadcrumb,
+        setBreadcrumb,
       }}
     >
       <div className="App">
