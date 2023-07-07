@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useMemo } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -11,7 +11,15 @@ import { DeductionForm } from "./component/deductions/DeductionForm";
 import { IncomeForm } from "./component/income/IncomeForm";
 import { NavBar } from "./component/navbar/NavBar";
 import { Summary } from "./component/summary/Summary";
+
 export const TaxContext = createContext();
+
+const AppLayout = () => (
+  <>
+    <NavBar />
+    <Outlet />
+  </>
+);
 
 function App() {
   const [income, setIncome] = useState({
@@ -34,40 +42,51 @@ function App() {
   const [OldTaxAmt, setOldtaxAmt] = useState("");
   const [newTaxAmt, setNewTaxAmt] = useState("");
   const [breadcrumb, setBreadcrumb] = useState(["Income Details"]);
-  const AppLayout = () => (
-    <>
-      <NavBar />
-      <Outlet />
-    </>
-  );
+
+  const contextValue = useMemo(() => {
+    return {
+      income,
+      setIncome,
+      deduction,
+      setDeduction,
+      taxableAmtSal,
+      setTaxableAmtSal,
+      OldTaxAmt,
+      setOldtaxAmt,
+      newTaxAmt,
+      setNewTaxAmt,
+      breadcrumb,
+      setBreadcrumb,
+    };
+  }, [
+    income,
+    setIncome,
+    deduction,
+    setDeduction,
+    taxableAmtSal,
+    setTaxableAmtSal,
+    OldTaxAmt,
+    setOldtaxAmt,
+    newTaxAmt,
+    setNewTaxAmt,
+    breadcrumb,
+    setBreadcrumb,
+  ]);
+
   let router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route element={<AppLayout />}>
-          <Route path="/" element={<IncomeForm />} />
+        <Route element={<AppLayout />} path="/">
+          <Route element={<IncomeForm />} path="/" />
           <Route path="/deduction" element={<DeductionForm />} />
           <Route path="/summary" element={<Summary />} />
         </Route>
       </>
     )
   );
+
   return (
-    <TaxContext.Provider
-      value={{
-        income,
-        setIncome,
-        deduction,
-        setDeduction,
-        taxableAmtSal,
-        setTaxableAmtSal,
-        OldTaxAmt,
-        setOldtaxAmt,
-        newTaxAmt,
-        setNewTaxAmt,
-        breadcrumb,
-        setBreadcrumb,
-      }}
-    >
+    <TaxContext.Provider value={contextValue}>
       <div className="App">
         <RouterProvider router={router} />
       </div>
